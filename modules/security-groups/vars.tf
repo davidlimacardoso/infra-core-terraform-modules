@@ -8,6 +8,7 @@ variable "sg_ingress" {
       from_port   = number
       to_port     = number
       cidr_blocks = list(string)
+      security_groups = list(string)
       description = string
     }))
   }))
