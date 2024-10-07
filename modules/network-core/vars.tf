@@ -109,5 +109,5 @@ locals {
   check_public_subnets = length(var.public_subnets) > 0 ? { for i in var.public_subnets : i.tag => { "cidr" = i["cidr_blocks"] } } : {}
 
   # Se for single_nat recebe valor 1, senão recebe o valor máximo de subnets privadas existentes
-  number_of_private_routes = var.single_nat ? 1 : max(values(local.private_subnets).*.index...) + 1
+  number_of_private_routes = var.single_nat ? 1 : max(values(local.public_subnets).*.index...) + 1
 }
